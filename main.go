@@ -75,7 +75,7 @@ func watchBluetoothConnection(devicePath string) {
 
 	for scanner.Scan() {
 		line := scanner.Text()
-		logDebug("收到DBus信号: %s", line)
+		logDebug("收到 DBus 信号: %s", line)
 
 		switch {
 		case strings.Contains(line, "string \"Connected\""):
@@ -101,10 +101,10 @@ func lockScreen() {
 		args []string
 	}{
 		{"dbus-send", []string{"--session", "--dest=org.gnome.ScreenSaver",
-			"/org/gnome/ScreenSaver", "org.gnome.ScreenSaver.Lock"}}, // <button class="citation-flag" data-index="1"><button class="citation-flag" data-index="3"><button class="citation-flag" data-index="6">
-		{"loginctl", []string{"lock-sessions"}},                          // <button class="citation-flag" data-index="5">
-		{"dm-tool", []string{"lock"}},                                    // <button class="citation-flag" data-index="7">
-		{"swayidle", []string{"timeout", "1", "loginctl lock-sessions"}}, // <button class="citation-flag" data-index="2">
+			"/org/gnome/ScreenSaver", "org.gnome.ScreenSaver.Lock"}},
+		{"loginctl", []string{"lock-sessions"}},
+		{"dm-tool", []string{"lock"}},
+		{"swayidle", []string{"timeout", "1", "loginctl lock-sessions"}},
 	}
 
 	for _, cmd := range cmds {
